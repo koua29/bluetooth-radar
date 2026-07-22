@@ -25,8 +25,17 @@ apparaît, et propose un **mode radar** pour savoir si l'on se **rapproche** d'u
 1. Télécharge **`BluetoothRadar-1.0.dmg`** depuis la page
    [Releases](../../releases).
 2. Ouvre le DMG, glisse **Bluetooth Radar** dans **Applications**.
-3. Au 1er lancement : **clic droit sur l'app → Ouvrir → Ouvrir** (app signée ad-hoc, non
-   notarisée), une seule fois.
+3. **Débloquer Gatekeeper** (l'app est signée ad-hoc mais non notarisée par Apple, macOS
+   la bloque au 1er lancement — c'est normal). Deux méthodes :
+   - **Réglages Système** : double-clique l'app → clique **OK** sur l'avertissement →
+     **Réglages Système → Confidentialité et sécurité** → section *Sécurité* → bouton
+     **« Ouvrir quand même »** → authentifie-toi.
+   - **Terminal** (une fois) :
+     ```bash
+     xattr -dr com.apple.quarantine "/Applications/Bluetooth Radar.app"
+     ```
+   > Sur macOS Sequoia (15) et ultérieur, l'ancien « clic droit → Ouvrir » ne fonctionne
+   > plus : utilise l'une des deux méthodes ci-dessus.
 4. Accepte la demande d'autorisation **Bluetooth** (sinon le scan reste vide).
 
 Le DMG est **universel** (Mac Intel **et** Apple Silicon).
