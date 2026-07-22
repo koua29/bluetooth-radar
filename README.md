@@ -4,9 +4,6 @@ App macOS (SwiftUI) qui détecte les appareils Bluetooth **à portée** (sans ê
 affiche leur détail, déclenche une **alerte visuelle + sonore** quand une adresse surveillée
 apparaît, et propose un **mode radar** pour savoir si l'on se **rapproche** d'un appareil.
 
-> ⚠️ **Pré-version (unstable / v1.0)** — fonctionnelle mais peu testée en conditions réelles.
-> Signalez les soucis dans les *Issues*.
-
 <p align="center">
   <img src="docs/screenshot-main.png" alt="Interface principale de Bluetooth Radar" width="720" />
 </p>
