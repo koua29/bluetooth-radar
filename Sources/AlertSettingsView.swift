@@ -21,7 +21,7 @@ struct AlertSettingsView: View {
             // Ajout
             GroupBox {
                 VStack(spacing: 8) {
-                    TextField("Nom du critère (ex. Montre d'Arnaud)", text: $newLabel)
+                    TextField("Nom du critère (ex. Ma montre)", text: $newLabel)
                     TextField("Adresse MAC / UUID / nom (ex. AA:BB:CC:DD:EE:FF)", text: $newPattern)
                         .font(.system(.body, design: .monospaced))
                     HStack {

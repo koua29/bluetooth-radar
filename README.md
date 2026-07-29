@@ -75,4 +75,4 @@ en m'offrant un café — il suffit de scanner ce QR code PayPal. Merci beaucoup
 
 ## Licence
 
-[MIT](LICENSE) © 2026 Arnaud Soulas
+[MIT](LICENSE) © 2026 koua29

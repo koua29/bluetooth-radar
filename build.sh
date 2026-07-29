@@ -7,7 +7,7 @@ set -euo pipefail
 
 APP_NAME="Bluetooth Radar"
 EXEC="BluetoothRadar"
-BUNDLE_ID="com.arnaud.bluetoothradar"
+BUNDLE_ID="com.koua29.bluetoothradar"
 VERSION="1.0"
 MIN_OS="13.0"
 
