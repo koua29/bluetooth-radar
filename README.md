@@ -1,78 +1,80 @@
 # Bluetooth Radar
 
-App macOS (SwiftUI) qui détecte les appareils Bluetooth **à portée** (sans être connectés),
-affiche leur détail, déclenche une **alerte visuelle + sonore** quand une adresse surveillée
-apparaît, et propose un **mode radar** pour savoir si l'on se **rapproche** d'un appareil.
+<p align="center">🇺🇸 <b>English</b> · 🇫🇷 <a href="README.fr.md">Français</a></p>
+
+A macOS app (SwiftUI) that detects Bluetooth devices **in range** (without connecting to them),
+shows their details, fires a **visual + audible alert** when a watched address
+shows up, and offers a **radar mode** to tell whether you're **getting closer** to a device.
 
 <p align="center">
-  <img src="docs/screenshot-main.png" alt="Interface principale de Bluetooth Radar" width="720" />
+  <img src="docs/screenshot-main.png" alt="Bluetooth Radar main window" width="720" />
 </p>
 
-## Fonctions
-- **Scan hybride** : BLE (CoreBluetooth) + Bluetooth classique (IOBluetooth).
-- **Détail par appareil** : adresse, RSSI, fabricant, services, classe d'appareil, horodatage.
-- **Alertes** par adresse **MAC**, **UUID** ou **fragment de nom** — visuelles (bannière rouge
-  + rebond du Dock) et sonores. **Chargées et actives dès le démarrage.**
-- **Mode radar** : suit le signal d'un appareil, indique *« vous vous rapprochez / éloignez »*,
-  avec bip de proximité type Geiger (de plus en plus rapide quand on s'approche).
-- **Cycle de scan réglable de 10 s à 5 min**.
+## Features
+- **Hybrid scan**: BLE (CoreBluetooth) + classic Bluetooth (IOBluetooth).
+- **Per-device details**: address, RSSI, manufacturer, services, device class, timestamp.
+- **Alerts** by **MAC address**, **UUID** or **name fragment** — visual (red banner
+  + Dock bounce) and audible. **Loaded and active at launch.**
+- **Radar mode**: follows a device's signal, tells you *"getting closer / moving away"*,
+  with a Geiger-style proximity beep (faster and faster as you get closer).
+- **Scan cycle adjustable from 10 s to 5 min**.
 
 <p align="center">
-  <img src="docs/screenshot-radar.png" alt="Mode radar de proximité" width="360" />
+  <img src="docs/screenshot-radar.png" alt="Proximity radar mode" width="360" />
 </p>
 
 ## Installation
-1. Télécharge **`BluetoothRadar-1.0.dmg`** depuis la page
-   [Releases](../../releases).
-2. Ouvre le DMG, glisse **Bluetooth Radar** dans **Applications**.
-3. **Débloquer Gatekeeper** (l'app est signée ad-hoc mais non notarisée par Apple, macOS
-   la bloque au 1er lancement — c'est normal). Deux méthodes :
-   - **Réglages Système** : double-clique l'app → clique **OK** sur l'avertissement →
-     **Réglages Système → Confidentialité et sécurité** → section *Sécurité* → bouton
-     **« Ouvrir quand même »** → authentifie-toi.
-   - **Terminal** (une fois) :
+1. Download **`BluetoothRadar-1.0.dmg`** from the
+   [Releases](../../releases) page.
+2. Open the DMG, drag **Bluetooth Radar** into **Applications**.
+3. **Get past Gatekeeper** (the app is ad-hoc signed but not notarized by Apple, so macOS
+   blocks it on first launch — that's expected). Two ways:
+   - **System Settings**: double-click the app → click **OK** on the warning →
+     **System Settings → Privacy & Security** → *Security* section → **"Open Anyway"**
+     button → authenticate.
+   - **Terminal** (once):
      ```bash
      xattr -dr com.apple.quarantine "/Applications/Bluetooth Radar.app"
      ```
-   > Sur macOS Sequoia (15) et ultérieur, l'ancien « clic droit → Ouvrir » ne fonctionne
-   > plus : utilise l'une des deux méthodes ci-dessus.
-4. Accepte la demande d'autorisation **Bluetooth** (sinon le scan reste vide).
+   > On macOS Sequoia (15) and later, the old "right-click → Open" no longer works:
+   > use one of the two methods above.
+4. Accept the **Bluetooth** permission request (otherwise the scan stays empty).
 
-Le DMG est **universel** (Mac Intel **et** Apple Silicon).
+The DMG is **universal** (Intel **and** Apple Silicon Macs).
 
-## Limite importante — adresses MAC sur macOS
-- **Bluetooth classique** → vraie **adresse MAC** (fiable pour les alertes).
-- **BLE** → macOS ne donne **pas** la MAC, seulement un **UUID** propre à ce Mac (pas
-  forcément stable). Pour surveiller un appareil BLE, utilise son **nom** ou son **UUID**
-  comme critère d'alerte. Le mode radar fonctionne surtout en BLE (RSSI mis à jour souvent) ;
-  en classique, le RSSI est souvent indisponible.
+## Important limitation — MAC addresses on macOS
+- **Classic Bluetooth** → real **MAC address** (reliable for alerts).
+- **BLE** → macOS does **not** expose the MAC, only a **UUID** specific to this Mac (not
+  necessarily stable). To watch a BLE device, use its **name** or its **UUID**
+  as the alert criterion. Radar mode works best with BLE (RSSI updated often);
+  with classic Bluetooth, RSSI is often unavailable.
 
-## Compiler depuis les sources
-Nécessite les **Command Line Tools** (pas Xcode complet).
+## Building from source
+Requires the **Command Line Tools** (not the full Xcode).
 ```bash
 ./build.sh              # arm64 (Apple Silicon)
-./build.sh --universal  # universel arm64 + x86_64
-./make_dmg.sh           # produit build/BluetoothRadar-1.0.dmg
+./build.sh --universal  # universal arm64 + x86_64
+./make_dmg.sh           # produces build/BluetoothRadar-1.0.dmg
 ```
 
 ## Architecture
-| Fichier | Rôle |
+| File | Role |
 |---|---|
-| `BLEScanner.swift` | Scan BLE (CoreBluetooth) — UUID, RSSI, services, fabricant |
-| `ClassicScanner.swift` | Scan classique (IOBluetooth) — vraie adresse MAC |
-| `ScanCoordinator.swift` | Fusion des scanners, cycle de scan, alertes, mode radar |
-| `AlertStore.swift` | Critères surveillés, persistance, correspondance |
-| `RadarView.swift` | Écran radar de proximité |
+| `BLEScanner.swift` | BLE scan (CoreBluetooth) — UUID, RSSI, services, manufacturer |
+| `ClassicScanner.swift` | Classic scan (IOBluetooth) — real MAC address |
+| `ScanCoordinator.swift` | Merges the scanners, scan cycle, alerts, radar mode |
+| `AlertStore.swift` | Watched criteria, persistence, matching |
+| `RadarView.swift` | Proximity radar screen |
 
-## ☕ Offrez-moi un café
+## ☕ Buy me a coffee
 
-Cette application est gratuite et open source. Si elle vous est utile, vous pouvez me remercier
-en m'offrant un café — il suffit de scanner ce QR code PayPal. Merci beaucoup ! 🙏
+This app is free and open source. If you find it useful, you can say thanks
+by buying me a coffee — just scan this PayPal QR code. Thanks a lot! 🙏
 
 <p align="center">
-  <img src="docs/paypal-qr.png" alt="QR code PayPal pour offrir un café" width="220" />
+  <img src="docs/paypal-qr.png" alt="PayPal QR code to buy me a coffee" width="220" />
 </p>
 
-## Licence
+## License
 
 [MIT](LICENSE) © 2026 koua29
