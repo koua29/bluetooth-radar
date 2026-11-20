@@ -78,3 +78,28 @@ by buying me a coffee — just scan this PayPal QR code. Thanks a lot! 🙏
 ## License
 
 [MIT](LICENSE) © 2026 koua29
+
+---
+
+## 🛒 Bluetooth gear
+
+*Amazon affiliate links: if you buy through these links, the project earns a small commission at no extra cost to you.*
+
+<table>
+<tr>
+<td align="center" width="33%">
+  <a href="https://www.amazon.com/dp/B0DYV5MPLF?linkCode=ll2&amp;tag=koua29btradar-20&amp;ref_=as_li_ss_tl"><img src="assets/amazon-B0DYV5MPLF.jpg" width="200" alt="UGREEN USB Bluetooth 6.0 adapter"></a><br>
+  <b><a href="https://www.amazon.com/dp/B0DYV5MPLF?linkCode=ll2&amp;tag=koua29btradar-20&amp;ref_=as_li_ss_tl">UGREEN USB Bluetooth 6.0 adapter</a></b><br><sub>Adds fast Bluetooth scanning to any PC or Mac</sub>
+</td>
+<td align="center" width="33%">
+  <a href="https://www.amazon.com/dp/B083SJF919?linkCode=ll2&amp;tag=koua29btradar-20&amp;ref_=as_li_ss_tl"><img src="assets/amazon-B083SJF919.jpg" width="200" alt="Taidacent nRF52840 BLE dongle"></a><br>
+  <b><a href="https://www.amazon.com/dp/B083SJF919?linkCode=ll2&amp;tag=koua29btradar-20&amp;ref_=as_li_ss_tl">Taidacent nRF52840 BLE dongle</a></b><br><sub>A real BLE sniffer for nRF Connect</sub>
+</td>
+<td align="center" width="33%">
+  <a href="https://www.amazon.com/dp/B0C2ZL46QC?linkCode=ll2&amp;tag=koua29btradar-20&amp;ref_=as_li_ss_tl"><img src="assets/amazon-B0C2ZL46QC.jpg" width="200" alt="ATUVOS item tracker (Find My)"></a><br>
+  <b><a href="https://www.amazon.com/dp/B0C2ZL46QC?linkCode=ll2&amp;tag=koua29btradar-20&amp;ref_=as_li_ss_tl">ATUVOS item tracker (Find My)</a></b><br><sub>A cheap BLE tag to see what the radar catches</sub>
+</td>
+</tr>
+</table>
+
+<sub>As an Amazon Associate I earn from qualifying purchases.</sub>
